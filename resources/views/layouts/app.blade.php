@@ -19,14 +19,33 @@
 
     <body class="font-sans antialiased">
 
-        <div class="min-h-screen">
+        <!-- Main Container -->
+        <div class="flex min-h-screen">
+
             <!-- Page Heading -->
-            <x-header/>
+            <header class="lg:w-1/5 shadow overflow-hidden min-h-screen">
+                <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <x-main-menu />
+
+                    <a href="/">
+                        <div class=" text-white bg-blue-600 text-center p-2 mt-3 rounded-2xl">
+                            Tweet
+                        </div>
+                    </a>
+                </div>
+            </header>
 
             <!-- Page Content -->
-            <main>
-                {{ $slot }}
+            <main class="flex-auto p-6 shadow">
+                <div class="flex-auto">
+                    Main Content
+                </div>
             </main>
+
+            <!-- Right Sidebar -->
+            <section class="lg:w-1/4 p-6 shadow">
+                Sidebar
+            </section>
         </div>
     </body>
 </html>
