@@ -2,7 +2,7 @@
    x-data
    @click.prevent="$dispatch('modal-create-tweet')"
 >
-    <div class=" text-white bg-blue-600 text-center p-2 mt-3 rounded-2xl">
+    <div class="text-lg text-white bg-blue-600 text-center p-2 mt-3 rounded-2xl">
         Tweet
     </div>
 </a>

@@ -1,3 +1,1 @@
-<x-app-layout>
-    sdfasdfasdf
-</x-app-layout>
+<x-app-layout active="Home" title="Home" />
