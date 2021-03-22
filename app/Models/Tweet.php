@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Tweet extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'content',
+        'user_id'
+    ];
+
+    public function author()
+    {
+        $this->belongsTo(User::class);
+    }
 }
