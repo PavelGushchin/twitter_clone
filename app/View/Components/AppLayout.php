@@ -6,17 +6,10 @@ use Illuminate\View\Component;
 
 class AppLayout extends Component
 {
-    public $title;
     public $active;
 
-    /**
-     * AppLayout constructor.
-     * @param $title
-     * @param $active
-     */
-    public function __construct($title = '', $active = '')
+    public function __construct($active = '')
     {
-        $this->title = $title;
         $this->active = $active;
     }
 

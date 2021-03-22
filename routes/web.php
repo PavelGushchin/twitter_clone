@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomepageController::class, 'show'])
+Route::get('/', [HomepageController::class, 'index'])
     ->middleware(['auth'])
     ->name('homepage');
+
+Route::get('explore', [ExploreController::class, 'index'])
+    ->middleware('auth')
+    ->name('explore');
 
 //Route::get('/create-tweet/{content}', [TweetController::class, 'store']);
 Route::post('/store-tweet', [TweetController::class, 'store'])

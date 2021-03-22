@@ -24,7 +24,7 @@
 
             <!-- Page Heading -->
             <header class="lg:w-1/5 shadow overflow-hidden min-h-screen">
-                <div class="mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <div class="mx-auto py-6 px-4">
                     <x-main-menu :active="$active" />
 
                     <x-create-tweet-button />
@@ -34,7 +34,7 @@
             <!-- Page Content -->
             <main class="flex-auto p-6 shadow">
                 <div class="flex-auto">
-                    <x-main-page-content :title="$title"/>
+                    {{ $slot }}
                 </div>
             </main>
 
