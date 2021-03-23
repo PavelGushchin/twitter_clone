@@ -32,7 +32,7 @@
             </header>
 
             <!-- Page Content -->
-            <main class="flex-auto p-6 shadow">
+            <main class="flex-auto pt-6 shadow">
                 <div class="flex-auto">
                     {{ $slot }}
                 </div>
