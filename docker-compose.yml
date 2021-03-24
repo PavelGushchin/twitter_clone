@@ -18,7 +18,6 @@ services:
             - sail
         depends_on:
             - pgsql
-        restart: always
     pgsql:
         image: postgres:13
         ports:
