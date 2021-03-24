@@ -52,7 +52,7 @@
                     Tweet
                 </button>
 
-                <button class="text-lg text-gray-50 bg-blue-400 text-center py-1 px-5 mt-3 rounded-2xl cursor-default"
+                <button class="text-lg text-white bg-blue-300 text-center py-1 px-5 mt-3 rounded-2xl cursor-default"
                         disabled x-show="!form.content.length">
                     Tweet
                 </button>

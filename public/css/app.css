@@ -4426,6 +4426,10 @@ select {
   background-image: linear-gradient(to top left, var(--tw-gradient-stops));
 }
 
+.bg-search-icon {
+  background-image: url('/img/icons/search_icon.svg');
+}
+
 .from-transparent {
   --tw-gradient-from: transparent;
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(0, 0, 0, 0));
@@ -27350,6 +27354,10 @@ select {
   width: max-content;
 }
 
+.w-2\/7 {
+  width: 28.5714286%;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -35109,6 +35117,10 @@ select {
 
   .sm\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .sm\:bg-search-icon {
+    background-image: url('/img/icons/search_icon.svg');
   }
 
   .sm\:from-transparent {
@@ -58022,6 +58034,10 @@ select {
     width: max-content;
   }
 
+  .sm\:w-2\/7 {
+    width: 28.5714286%;
+  }
+
   .sm\:z-0 {
     z-index: 0;
   }
@@ -65716,6 +65732,10 @@ select {
 
   .md\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .md\:bg-search-icon {
+    background-image: url('/img/icons/search_icon.svg');
   }
 
   .md\:from-transparent {
@@ -88629,6 +88649,10 @@ select {
     width: max-content;
   }
 
+  .md\:w-2\/7 {
+    width: 28.5714286%;
+  }
+
   .md\:z-0 {
     z-index: 0;
   }
@@ -96323,6 +96347,10 @@ select {
 
   .lg\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .lg\:bg-search-icon {
+    background-image: url('/img/icons/search_icon.svg');
   }
 
   .lg\:from-transparent {
@@ -119236,6 +119264,10 @@ select {
     width: max-content;
   }
 
+  .lg\:w-2\/7 {
+    width: 28.5714286%;
+  }
+
   .lg\:z-0 {
     z-index: 0;
   }
@@ -126930,6 +126962,10 @@ select {
 
   .xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .xl\:bg-search-icon {
+    background-image: url('/img/icons/search_icon.svg');
   }
 
   .xl\:from-transparent {
@@ -149843,6 +149879,10 @@ select {
     width: max-content;
   }
 
+  .xl\:w-2\/7 {
+    width: 28.5714286%;
+  }
+
   .xl\:z-0 {
     z-index: 0;
   }
@@ -157537,6 +157577,10 @@ select {
 
   .\32xl\:bg-gradient-to-tl {
     background-image: linear-gradient(to top left, var(--tw-gradient-stops));
+  }
+
+  .\32xl\:bg-search-icon {
+    background-image: url('/img/icons/search_icon.svg');
   }
 
   .\32xl\:from-transparent {
@@ -180448,6 +180492,10 @@ select {
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
+  }
+
+  .\32xl\:w-2\/7 {
+    width: 28.5714286%;
   }
 
   .\32xl\:z-0 {

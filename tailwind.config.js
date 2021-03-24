@@ -12,6 +12,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            width: {
+                '2/7': '28.5714286%',
+            },
+            backgroundImage: theme => ({
+                'search-icon': "url('/img/icons/search_icon.svg')"
+            })
         },
     },
 
