@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Tweet;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TweetFactory extends Factory
@@ -22,7 +23,7 @@ class TweetFactory extends Factory
     public function definition()
     {
         return [
-            'content' => $this->faker->text(),
+            'text' => $this->faker->text(280),
         ];
     }
 }

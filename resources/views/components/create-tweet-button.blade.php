@@ -14,6 +14,7 @@
      x-data="{ show: false }"
      x-show="show"
      @modal-create-tweet.window="show = true"
+     style="display: none;"
 >
     <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <!--
