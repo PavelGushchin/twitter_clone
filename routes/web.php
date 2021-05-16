@@ -24,9 +24,20 @@ Route::get('explore', [ExploreController::class, 'index'])
     ->middleware('auth')
     ->name('explore');
 
+Route::get('notifications', function () {
+    return view('coming_soon');
+})->name('notifications');
+
+Route::get('messages', function () {
+    return view('coming_soon');
+})->name('messages');
+
+Route::get('profile', function () {
+    return view('coming_soon');
+})->name('profile');
+
+
 //Route::get('/create-tweet/{content}', [TweetController::class, 'store']);
 Route::post('/store-tweet', [TweetController::class, 'store'])
     ->middleware('auth')
     ->name('store-tweet');
-
-require __DIR__.'/auth.php';

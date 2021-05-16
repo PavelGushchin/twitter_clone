@@ -8,6 +8,6 @@ class ExploreController extends Controller
 {
     public function index()
     {
-        return view('explore');
+        return view('coming_soon');
     }
 }

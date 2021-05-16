@@ -24,6 +24,7 @@ class TweetFactory extends Factory
     {
         return [
             'text' => $this->faker->text(280),
+
         ];
     }
 }

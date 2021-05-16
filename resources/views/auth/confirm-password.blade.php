@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-auth-card>
+    <x-auth.auth-card>
         <x-slot name="logo">
             <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
@@ -11,7 +11,7 @@
         </div>
 
         <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+        <x-auth.auth-validation-errors class="mb-4" :errors="$errors" />
 
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
@@ -32,5 +32,5 @@
                 </x-button>
             </div>
         </form>
-    </x-auth-card>
+    </x-auth.auth-card>
 </x-guest-layout>

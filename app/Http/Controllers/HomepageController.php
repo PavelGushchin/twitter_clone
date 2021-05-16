@@ -8,9 +8,8 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        $tweets = Tweet::where('author_id', auth()->user()->id)
-            ->orderBy('created_at', 'desc')
-            ->take(15)
+        $tweets = Tweet::orderBy('created_at', 'desc')
+            ->take(20)
             ->get();
 
         return view('homepage', [

@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Twitter Clone') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -22,16 +22,16 @@
         <!-- Main Container -->
         <div class="flex min-h-screen">
 
-            <!-- Page Heading -->
-            <header class="lg:w-1/5 shadow overflow-hidden min-h-screen">
+            <!-- Left Sidebar -->
+            <section class="lg:w-1/5 shadow overflow-hidden min-h-screen">
                 <div class="mx-auto py-6 px-4">
-                    <x-main-menu active="{{ $active }}" />
 
-                    <x-create-tweet-button />
+                    <!-- Main Menu -->
+                    @include('partials.main-menu.navigation')
                 </div>
-            </header>
+            </section>
 
-            <!-- Page Content -->
+            <!-- Main Content -->
             <main class="flex-auto pt-6 shadow">
                 <div class="flex-auto">
                     {{ $slot }}

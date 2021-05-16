@@ -1,4 +1,4 @@
-<x-app-layout active="Home">
+<x-layouts.main>
     <div class="text-2xl px-6">
         Home
     </div>
@@ -9,7 +9,7 @@
 
     <div class="flex mt-5 px-6">
         <div>
-            <a href="{{ auth()->user()->slug }}">
+            <a href="{{ auth()->user()->id }}">
                 <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl">
             </a>
         </div>
@@ -71,4 +71,4 @@
             </x-tweet-card>
         @endforeach
     </div>
-</x-app-layout>
+</x-layouts.main>

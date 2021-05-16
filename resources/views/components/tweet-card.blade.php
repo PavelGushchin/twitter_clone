@@ -7,23 +7,23 @@
 
     <article class="flex">
         <div>
-            <a href="{{ $tweet->user->slug }}">
+            <a href="{{ $tweet->author->id }}">
                 <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl" />
             </a>
         </div>
 
         <div class="px-4 flex-grow">
             <div>
-                <a href="{{ $tweet->user->slug }}">
+                <a href="{{ $tweet->author->id }}">
                     <span class="font-bold">
-                        {{ $tweet->user->name }}
+                        {{ $tweet->author->name }}
                     </span>
                     <span class="text-gray-500">
-                        <span>@</span>{{ $tweet->user->slug }}
+                        <span>@</span>{{ $tweet->author->id }}
                     </span>
                 </a>
 
-                <a href="{{ $tweet->user->slug }}/status/{{ $tweet->id }}" class="text-gray-500">
+                <a href="{{ $tweet->author->id }}/status/{{ $tweet->id }}" class="text-gray-500">
                     <span>
                         ·
                     </span>
@@ -33,9 +33,9 @@
                 </a>
             </div>
 
-            <a href="{{ $tweet->user->slug }}/status/{{ $tweet->id }}">
+            <a href="{{ $tweet->author->id }}/status/{{ $tweet->id }}">
                 <div class="pb-3">
-                    {{ $tweet->content }}
+                    {{ $tweet->text }}
                 </div>
             </a>
 

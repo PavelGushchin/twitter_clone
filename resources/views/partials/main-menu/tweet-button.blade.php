@@ -1,3 +1,4 @@
+<!-- Tweet button -->
 <a href="/"
    x-data
    @click.prevent="$dispatch('modal-create-tweet')"
@@ -8,8 +9,7 @@
 </a>
 
 
-
-<!-- This example requires Tailwind CSS v2.0+ -->
+<!-- Modal window that appears after clicking on Tweet button -->
 <div class="fixed z-10 inset-0 overflow-y-auto"
      x-data="{ show: false }"
      x-show="show"
@@ -61,9 +61,9 @@
                         </h3>
                         <div class="mt-2 p-2">
                             <textarea name="tweet" id="tweet" rows="5" class="resize-none w-full"></textarea>
-{{--                            <p class="text-sm text-gray-500">--}}
-{{--                                Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.--}}
-{{--                            </p>--}}
+                            {{--                            <p class="text-sm text-gray-500">--}}
+                            {{--                                Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.--}}
+                            {{--                            </p>--}}
                         </div>
                     </div>
                 </div>

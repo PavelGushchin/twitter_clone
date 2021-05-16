@@ -1,3 +1,3 @@
-<x-app-layout active="Explore">
+<x-layouts.main>
 
-</x-app-layout>
+</x-layouts.main>
