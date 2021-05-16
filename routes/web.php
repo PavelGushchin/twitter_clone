@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\ExploreController;
-use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomepageController::class, 'index'])
+Route::get('/', [HomeController::class, 'index'])
     ->middleware(['auth'])
-    ->name('homepage');
+    ->name('home');
 
 Route::get('explore', [ExploreController::class, 'index'])
     ->middleware('auth')

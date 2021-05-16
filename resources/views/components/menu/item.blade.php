@@ -1,4 +1,8 @@
-@props(['title', 'route' => '', 'active' => ''])
+@props(['title', 'route' => ''])
+
+@php
+    $active = Request::routeIs($route) ? true : false;
+@endphp
 
 <div>
     <a href="{{ $route ? route($route) : '' }}"

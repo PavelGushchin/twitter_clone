@@ -23,16 +23,16 @@
         <div class="flex min-h-screen">
 
             <!-- Left Sidebar -->
-            <section class="lg:w-1/5 shadow overflow-hidden min-h-screen">
+            <section class="lg:w-1/5  shadow overflow-hidden min-h-screen">
                 <div class="mx-auto py-6 px-4">
 
                     <!-- Main Menu -->
-                    @include('partials.main-menu.navigation')
+                    @include('menu.main-menu')
                 </div>
             </section>
 
             <!-- Main Content -->
-            <main class="flex-auto pt-6 shadow">
+            <main class="flex-auto pt-6 shadow lg:w-1/2">
                 <div class="flex-auto">
                     {{ $slot }}
                 </div>
@@ -53,9 +53,9 @@
                     </div>
                     <hr>
 
-                    <x-suggested-user />
-                    <x-suggested-user />
-                    <x-suggested-user />
+                    <x-main.suggested-user />
+                    <x-main.suggested-user />
+                    <x-main.suggested-user />
 
                     <div class="p-4">
                         <a href="/i/connect_people?user_id={{ auth()->user()->id }}" class="text-blue-500 font-bold">

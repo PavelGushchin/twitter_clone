@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tweet;
 
-class HomepageController extends Controller
+class HomeController extends Controller
 {
     public function index()
     {
@@ -12,7 +12,7 @@ class HomepageController extends Controller
             ->take(20)
             ->get();
 
-        return view('homepage', [
+        return view('main.home', [
             'tweets' => $tweets
         ]);
     }

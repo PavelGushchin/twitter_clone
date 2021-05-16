@@ -1,4 +1,4 @@
-<x-layouts.main>
+<x-main-layout>
     <div class="text-2xl px-6">
         Home
     </div>
@@ -66,9 +66,7 @@
 
     <div>
         @foreach($tweets as $tweet)
-            <x-tweet-card :tweet="$tweet">
-
-            </x-tweet-card>
+            <x-main.tweet-card :tweet="$tweet" />
         @endforeach
     </div>
-</x-layouts.main>
+</x-main-layout>
