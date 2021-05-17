@@ -1,8 +1,8 @@
-<x-guest-layout>
+<x-auth-layout>
     <x-auth.auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <x-auth.application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
 
@@ -21,16 +21,16 @@
 
             <!-- Email Address -->
             <div>
-                <x-label for="email" :value="__('Email')" />
+                <x-auth.label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-auth.input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <x-button>
+                <x-auth.button>
                     {{ __('Email Password Reset Link') }}
-                </x-button>
+                </x-auth.button>
             </div>
         </form>
     </x-auth.auth-card>
-</x-guest-layout>
+</x-auth-layout>

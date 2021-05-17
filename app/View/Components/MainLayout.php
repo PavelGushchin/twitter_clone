@@ -8,6 +8,6 @@ class MainLayout extends Component
 {
     public function render()
     {
-        return view('layouts.main');
+        return view('layouts.main-layout');
     }
 }

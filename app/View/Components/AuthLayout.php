@@ -8,6 +8,6 @@ class AuthLayout extends Component
 {
     public function render()
     {
-        return view('layouts.auth');
+        return view('layouts.auth-layout');
     }
 }
