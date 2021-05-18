@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
     purge: [
@@ -14,6 +15,9 @@ module.exports = {
             },
             width: {
                 '2/7': '28.5714286%',
+            },
+            colors: {
+                'light-blue': colors.lightBlue,
             },
             backgroundImage: theme => ({
                 'search-icon': "url('/img/icons/search_icon.svg')"

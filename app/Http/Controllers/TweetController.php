@@ -6,6 +6,7 @@ use App\Models\Tweet;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TweetController extends Controller
 {
@@ -16,16 +17,18 @@ class TweetController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'content' => 'string|required|max:274'
+        $validated = $request->validate([
+            'text' => 'string|required|max:274'
         ]);
+
+//        $validated['text'] = Str::random(10);
 
         $tweet = Tweet::create([
-            'content' => $request['content'],
-            'user_id' => auth()->user()->id
+            'text' => $validated['text'],
+            'author_id' => auth()->user()->id
         ]);
 
-        return new JsonResponse($tweet);
+        return $tweet;
     }
 
     public function show(Tweet $tweet)

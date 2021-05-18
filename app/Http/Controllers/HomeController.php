@@ -12,7 +12,7 @@ class HomeController extends Controller
             ->take(20)
             ->get();
 
-        return view('main.home', [
+        return view('home', [
             'tweets' => $tweets
         ]);
     }
