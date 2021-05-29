@@ -7,7 +7,7 @@
 
     <div class="flex mt-5 px-6">
         <div>
-            <a href="{{ auth()->user()->id }}">
+            <a href="{{ auth()->user()->nickname }}">
                 <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl">
             </a>
         </div>

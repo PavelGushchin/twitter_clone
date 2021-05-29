@@ -2,18 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Tweet;
-use App\Models\User;
+use App\Models\Profile;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TweetFactory extends Factory
+class ProfileFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Tweet::class;
+    protected $model = Profile::class;
 
     /**
      * Define the model's default state.
@@ -23,7 +22,7 @@ class TweetFactory extends Factory
     public function definition()
     {
         return [
-            'text' => $this->faker->text(280),
+            //
         ];
     }
 }

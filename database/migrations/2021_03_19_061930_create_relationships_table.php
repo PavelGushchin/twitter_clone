@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFollowingRelationshipsTable extends Migration
+class CreateRelationshipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateFollowingRelationshipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('following_relationships', function (Blueprint $table) {
-            $table->id();
+        Schema::create('relationships', function (Blueprint $table) {
+            $table->primary(['followed_user_id', 'follower_id']);
             $table->foreignId('followed_user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('follower_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
@@ -28,6 +28,6 @@ class CreateFollowingRelationshipsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('following_relationships');
+        Schema::dropIfExists('relationships');
     }
 }

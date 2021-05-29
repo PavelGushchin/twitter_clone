@@ -33,7 +33,7 @@ class TweetController extends Controller
 
     public function show(Tweet $tweet)
     {
-        //
+
     }
 
     public function destroy(Tweet $tweet)

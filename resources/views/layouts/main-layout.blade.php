@@ -24,7 +24,7 @@
 
             <!-- Left Sidebar -->
             <section class="lg:w-1/5 shadow overflow-hidden min-h-screen">
-                <div class="mx-auto py-6 px-4">
+                <div class="fixed mx-auto py-6 px-4">
 
                     <!-- Main Menu -->
                     @include('left-sidebar.main-menu')
