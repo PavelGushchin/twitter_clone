@@ -18,9 +18,9 @@ class CreateTweetsTable extends Migration
             $table->text('text')->nullable();
             $table->nullableMorphs('mediable');
             $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('reply_to_tweet_id')->nullable()->constrained('tweets')->nullOnDelete();
-            $table->timestamp('created_at')->index();
-            $table->timestamp('updated_at');
+            $table->foreignId('parent_tweet_id')->nullable()->constrained('tweets')->nullOnDelete();
+            $table->timestamps();
+//            $table->timestamp('created_at');
         });
     }
 

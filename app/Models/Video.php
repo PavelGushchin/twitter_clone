@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Video extends Model
 {
     use HasFactory;
+
+    public function tweet()
+    {
+        return $this->morphOne(Tweet::class, 'mediable');
+    }
 }

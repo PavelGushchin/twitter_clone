@@ -16,8 +16,7 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->id();
             $table->json('files');
-            $table->foreignId('tweet_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
+            $table->timestamp('created_at');
         });
     }
 

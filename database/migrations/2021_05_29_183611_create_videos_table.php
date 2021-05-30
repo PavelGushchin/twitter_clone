@@ -18,8 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('filename');
             $table->string('preview_image');
             $table->string('length');
-            $table->foreignId('tweet_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
+            $table->timestamp('created_at');
         });
     }
 

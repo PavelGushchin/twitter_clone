@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    public function tweet()
+    {
+        return $this->morphTo(Tweet::class, 'mediable');
+    }
+
+    public function taggedUsers()
+    {
+        return $this->belongsToMany(User::class, 'users_on_images');
+    }
 }

@@ -38,4 +38,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tweet::class, 'author_id');
     }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+
+    public function myFollowers()
+    {
+        return $this->hasMany(Relationship::class, 'followed_user_id');
+    }
+
+    public function peopleIFollow()
+    {
+        return $this->hasMany(Relationship::class, 'follower_id');
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function retweets()
+    {
+        return $this->hasMany(Retweet::class);
+    }
+
+    public function tagedOnImages()
+    {
+        return $this->belongsToMany(Image::class, 'users_on_images');
+    }
 }
