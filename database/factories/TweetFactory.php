@@ -3,15 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Tweet;
-use App\Models\User;
-use Database\Factories\Traits\RandomDateTime;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 
 class TweetFactory extends Factory
 {
-    use RandomDateTime;
-
     /**
      * The name of the factory's corresponding model.
      *
@@ -26,9 +22,18 @@ class TweetFactory extends Factory
      */
     public function definition()
     {
+        $tweetsAmount = Tweet::count();
+
+        $randomTweetId = null;
+
+        if ($tweetsAmount > 10) {
+            $randomTweetId = $this->faker->optional(0.5)->numberBetween(1, $tweetsAmount);
+        }
+
         return [
             'text' => $this->faker->realText(280),
-            'created_at' => $this->randomDateTime(),
+            'parent_tweet_id' => $randomTweetId,
+            'created_at' => Carbon::now()->subDays(rand(0, 365)),
         ];
     }
 }

@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
             'email' => 'pavel_gushchin@mail.ru',
             'phone' => '8-312-131-41-22',
             'password' => Hash::make('12345678'),
-            'created_at' => (new Carbon(now()))->subYear(),
+            'created_at' => Carbon::now()->subDays(rand(0, 365)),
         ]);
 
         Profile::factory()->for($mainUser)->create();
