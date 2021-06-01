@@ -3,12 +3,16 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Database\Factories\Traits\RandomDateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
+    use RandomDateTime;
+
     /**
      * The name of the factory's corresponding model.
      *
@@ -31,8 +35,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'created_at' => $this->randomDateTime(),
         ];
     }
 

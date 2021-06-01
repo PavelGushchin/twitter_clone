@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Tweet extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+    public $timestamps = false;
+
 
     public function author()
     {
@@ -34,5 +37,11 @@ class Tweet extends Model
     public function parentTweet()
     {
         return $this->belongsTo(Tweet::class);
+    }
+
+
+    public function getCreatedAtAttribute($date)
+    {
+        return new Carbon($date);
     }
 }

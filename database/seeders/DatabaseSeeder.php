@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,11 +14,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserSeeder::class
+            UserSeeder::class,
+            RelationshipSeeder::class,
+            LikeSeeder::class,
+            RetweetSeeder::class,
         ]);
-
-        for ($i = 10; $i >= 0; $i--) {
-            User::factory()->count(10)->hasTweets($i)->create();
-        }
     }
 }

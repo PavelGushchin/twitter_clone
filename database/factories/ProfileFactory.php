@@ -22,7 +22,11 @@ class ProfileFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'birth_date' => $this->faker->date(),
+            'avatar' => null,
+            'bio' => $this->faker->realText(),
+            'location' => $this->faker->city,
+            'website' => 'https://' . $this->faker->domainName,
         ];
     }
 }
