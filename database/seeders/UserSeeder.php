@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
     }
 
 
-    protected function createOtherUsers($numOfUsers = 100, $eachUserHasTweets = 10)
+    protected function createOtherUsers($numOfUsers = 5, $eachUserHasTweets = 10)
     {
         for ($i = 1; $i <= $numOfUsers; $i++) {
             User::factory()->hasProfile()->hasTweets($eachUserHasTweets)->create();

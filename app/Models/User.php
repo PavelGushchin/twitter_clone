@@ -39,17 +39,20 @@ class User extends Authenticatable
         return $this->hasMany(Tweet::class, 'author_id');
     }
 
+
     public function profile()
     {
         return $this->hasOne(Profile::class);
     }
 
-    public function myFollowers()
+
+    public function followers()
     {
         return $this->hasMany(Relationship::class, 'followed_user_id');
     }
 
-    public function peopleIFollow()
+
+    public function following()
     {
         return $this->hasMany(Relationship::class, 'follower_id');
     }
@@ -59,10 +62,12 @@ class User extends Authenticatable
         return $this->hasMany(Like::class);
     }
 
+
     public function retweets()
     {
         return $this->hasMany(Retweet::class);
     }
+
 
     public function tagedOnImages()
     {

@@ -20,4 +20,15 @@ class Relationship extends Model
         return new Carbon($date);
     }
 
+
+    public function followed()
+    {
+        return $this->belongsTo(User::class, 'followed_user_id');
+    }
+
+
+    public function follower()
+    {
+        return $this->belongsTo(User::class, 'follower_id');
+    }
 }

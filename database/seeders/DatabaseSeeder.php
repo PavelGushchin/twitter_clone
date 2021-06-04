@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             RelationshipSeeder::class,
             LikeSeeder::class,
             RetweetSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 }

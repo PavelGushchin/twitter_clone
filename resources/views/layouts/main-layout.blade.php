@@ -20,7 +20,7 @@
     <body class="font-sans antialiased bg-white text-black">
 
         <!-- Main Container -->
-        <div class="flex min-h-screen">
+        <div id="main-container" class="flex min-h-screen">
 
             <!-- Left Sidebar -->
             <section class="lg:w-1/5 shadow overflow-hidden min-h-screen">

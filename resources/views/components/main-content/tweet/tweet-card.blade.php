@@ -1,25 +1,25 @@
 @props(['tweet'])
 
-<div class="px-6 py-4 my-2 shadow">
+<div class="px-6 py-6 my-4 shadow">
     <div>
 
     </div>
 
     <article class="flex">
-        <div>
+        <div class="flex-shrink-0">
             <a href="{{ $tweet->author->id }}">
-                <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl" />
+                <img src="{{ $tweet->author->profile->avatar ?: '/img/default_profile_images/default_profile_normal.png' }}" alt="" class="rounded-3xl" style="width: 48px; height: 48px;" />
             </a>
         </div>
 
-        <div class="px-4 flex-grow">
+        <div class="pl-4">
             <div>
                 <a href="{{ $tweet->author->id }}">
                     <span class="font-bold">
                         {{ $tweet->author->name }}
                     </span>
                     <span class="text-gray-500">
-                        <span>@</span>{{ $tweet->author->id }}
+                        <span>@</span>{{ $tweet->author->nickname }}
                     </span>
                 </a>
 
@@ -38,6 +38,14 @@
                     {{ $tweet->text }}
                 </div>
             </a>
+
+            <div class="mb-4 mt-2">
+                @if ($tweet->mediable_type === 'image')
+                    <img src="{{ asset('media/' . $tweet->mediable->filename) }}" alt="{{ $tweet->mediable->description }}" class="rounded-2xl">
+                @elseif ($tweet->mediable_type === 'video')
+
+                @endif
+            </div>
 
 
             <div class="flex text-gray-500">

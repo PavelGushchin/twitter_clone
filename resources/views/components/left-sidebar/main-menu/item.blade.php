@@ -6,7 +6,7 @@
     <a href="{{ $route ? route($route) : '' }}"
        class="inline-flex items-center font-bold text-xl hover:text-light-blue-500 hover:bg-light-blue-100 p-2 rounded-2xl {{ $active ? 'text-light-blue-500' : '' }}"
     >
-        <svg viewBox="0 0 24 24" class="stroke-current fill-current w-5 h-5 inline">
+        <svg viewBox="0 0 24 24" class="stroke-current fill-current w-6 h-6 inline">
             {{ $slot }}
         </svg>
 
