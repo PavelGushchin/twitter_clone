@@ -22,17 +22,13 @@ class TweetFactory extends Factory
      */
     public function definition()
     {
-        $tweetsAmount = Tweet::count();
+        $tweetsInTotal = Tweet::count();
 
-        $randomTweetId = null;
-
-        if ($tweetsAmount > 10) {
-            $randomTweetId = $this->faker->optional(0.5)->numberBetween(1, $tweetsAmount);
-        }
+        $parentTweetId = ($tweetsInTotal > 0) ? $this->faker->optional(0.5)->numberBetween(1, $tweetsInTotal) : null;
 
         return [
             'text' => $this->faker->realText(280),
-            'parent_tweet_id' => $randomTweetId,
+            'parent_tweet_id' => $parentTweetId,
             'created_at' => Carbon::now()->subDays(rand(0, 365)),
         ];
     }

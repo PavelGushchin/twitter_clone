@@ -5,11 +5,19 @@ namespace Database\Seeders;
 use App\Models\Like;
 use App\Models\Tweet;
 use App\Models\User;
+use Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
 class LikeSeeder extends Seeder
 {
+    protected $faker;
+
+    public function __construct()
+    {
+        $this->faker = Faker\Factory::create();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -20,7 +28,7 @@ class LikeSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweets = Tweet::inRandomOrder()->take(10)->get();
+            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 150))->get();
 
             $tweets->map(function ($tweet) use ($user) {
                 Like::create([

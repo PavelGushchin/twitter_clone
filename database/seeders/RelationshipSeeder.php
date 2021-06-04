@@ -4,11 +4,19 @@ namespace Database\Seeders;
 
 use App\Models\Relationship;
 use App\Models\User;
+use Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
 class RelationshipSeeder extends Seeder
 {
+    protected $faker;
+
+    public function __construct()
+    {
+        $this->faker = Faker\Factory::create();
+    }
+
     /**
      * Run the database seeds.
      *
@@ -19,13 +27,11 @@ class RelationshipSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $followers = User::inRandomOrder()->take(10)->get();
+            $followers = User::inRandomOrder()->take($this->faker->numberBetween(0, 30))->get();
 
-            $followers->map(function ($follower) use ($user) {
-                if ($follower->id === $user->id) {
-                    return;
-                }
-
+            $followers->reject(function ($follower) use ($user) {
+                return $follower->id === $user->id;
+            })->map(function ($follower) use ($user) {
                 Relationship::create([
                     'followed_user_id' => $user->id,
                     'follower_id' => $follower->id,

@@ -5,11 +5,20 @@ namespace Database\Seeders;
 use App\Models\Retweet;
 use App\Models\Tweet;
 use App\Models\User;
+use Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
 
 class RetweetSeeder extends Seeder
 {
+    protected $faker;
+
+    public function __construct()
+    {
+        $this->faker = Faker\Factory::create();
+    }
+
+
     /**
      * Run the database seeds.
      *
@@ -20,7 +29,7 @@ class RetweetSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweets = Tweet::inRandomOrder()->take(5)->get();
+            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 50))->get();
 
             $tweets->map(function ($tweet) use ($user) {
                 Retweet::create([
