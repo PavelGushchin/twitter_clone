@@ -18,7 +18,7 @@ class CreateVideosTable extends Migration
             $table->string('filename');
             $table->string('preview_image');
             $table->string('length');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

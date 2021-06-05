@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Relationship;
 use App\Models\User;
+use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -35,7 +36,7 @@ class RelationshipSeeder extends Seeder
                 Relationship::create([
                     'followed_user_id' => $user->id,
                     'follower_id' => $follower->id,
-                    'created_at' => Carbon::now()->subDays(rand(0, 365)),
+                    'created_at' => RandomDateTime::create(),
                 ]);
             });
         });

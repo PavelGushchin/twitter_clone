@@ -34,6 +34,7 @@ class ImageSeeder extends Seeder
 
             $image->update([
                 'filename' => 'fake_tweets_images/' . $this->fakeImages->random(),
+                'created_at' => $tweet->createdAt,
             ]);
 
             $tweet->update([

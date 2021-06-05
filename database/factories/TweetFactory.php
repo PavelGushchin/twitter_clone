@@ -3,8 +3,9 @@
 namespace Database\Factories;
 
 use App\Models\Tweet;
+use Carbon\Carbon;
+use Database\Seeders\Helpers\RandomDateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Carbon;
 
 class TweetFactory extends Factory
 {
@@ -26,10 +27,18 @@ class TweetFactory extends Factory
 
         $parentTweetId = ($tweetsInTotal > 0) ? $this->faker->optional(0.5)->numberBetween(1, $tweetsInTotal) : null;
 
+        if ($parentTweetId) {
+            $parentTweet = Tweet::find($parentTweetId);
+
+            $randomDateTime = RandomDateTime::create(Carbon::make($parentTweet->createdAt));
+        } else {
+            $randomDateTime = RandomDateTime::create();
+        }
+
         return [
             'text' => $this->faker->realText(280),
             'parent_tweet_id' => $parentTweetId,
-            'created_at' => Carbon::now()->subDays(rand(0, 365)),
+            'created_at' => $randomDateTime,
         ];
     }
 }

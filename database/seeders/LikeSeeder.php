@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Like;
 use App\Models\Tweet;
 use App\Models\User;
+use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Carbon;
@@ -34,7 +35,7 @@ class LikeSeeder extends Seeder
                 Like::create([
                     'user_id' => $user->id,
                     'tweet_id' => $tweet->id,
-                    'created_at' => Carbon::now()->subDays(rand(0, 365)),
+                    'created_at' => RandomDateTime::create(Carbon::make($tweet->createdAt)),
                 ]);
             });
         });

@@ -17,7 +17,7 @@ class CreateRelationshipsTable extends Migration
             $table->primary(['followed_user_id', 'follower_id']);
             $table->foreignId('followed_user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('follower_id')->constrained('users')->onDelete('cascade');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->softDeletes();
         });
     }
