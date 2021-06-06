@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Carbon;
 
 class Video extends Model
 {
@@ -17,6 +17,7 @@ class Video extends Model
     {
         return $this->morphOne(Tweet::class, 'mediable');
     }
+
 
     public function getCreatedAtAttribute($date)
     {

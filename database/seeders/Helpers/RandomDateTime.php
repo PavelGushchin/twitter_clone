@@ -13,7 +13,7 @@ class RandomDateTime
      * @param string|Carbon $startDate
      * @return Carbon
      */
-    public static function create($startDate = '-1 year')
+    public static function create($startDate = '-3 years')
     {
         if (self::$faker == null) {
             self::$faker = Faker\Factory::create();
@@ -21,7 +21,7 @@ class RandomDateTime
 
         if ($startDate instanceof Carbon) {
             $randomDate = $startDate;
-            $randomDate->addHours(self::$faker->numberBetween(1, 10));
+            $randomDate->addHours(self::$faker->numberBetween(1, 24));
         } else {
             $randomDate = Carbon::make(self::$faker->dateTimeBetween($startDate));
         }

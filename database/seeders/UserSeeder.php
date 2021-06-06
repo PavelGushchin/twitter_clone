@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $this->createMainUser();
-        $this->createOtherUsers(5, 10);
+        $this->createOtherUsers();
     }
 
 
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'email' => 'pavel_gushchin@mail.ru',
             'phone' => '8-312-131-41-22',
             'password' => Hash::make('12345678'),
-            'created_at' => RandomDateTime::create('-3 years'),
+            'created_at' => RandomDateTime::create(),
         ]);
 
         Profile::factory()->for($mainUser)->create();

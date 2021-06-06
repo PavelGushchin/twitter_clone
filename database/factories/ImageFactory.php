@@ -3,8 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Image;
-use Carbon\Carbon;
-use Database\Seeders\Helpers\RandomDateTime;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ImageFactory extends Factory

@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Carbon;
 
 class Relationship extends Model
 {
@@ -15,20 +15,19 @@ class Relationship extends Model
     public $timestamps = false;
 
 
-    public function getCreatedAtAttribute($date)
-    {
-        return new Carbon($date);
-    }
-
-
     public function followed()
     {
         return $this->belongsTo(User::class, 'followed_user_id');
     }
 
-
     public function follower()
     {
         return $this->belongsTo(User::class, 'follower_id');
+    }
+
+
+    public function getCreatedAtAttribute($date)
+    {
+        return new Carbon($date);
     }
 }
