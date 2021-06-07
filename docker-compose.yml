@@ -6,7 +6,7 @@ services:
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
-        image: sail-8.0/app
+        image: sail-twitter-clone/php8.0
         ports:
             - '${APP_PORT:-80}:80'
         environment:

@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tweet;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $usersWhichIFollow =
+        $user = auth()->user();
 
-        $tweets = Tweet::orderBy('created_at', 'desc')
-            ->take(20)
+        $tweets = Tweet::join('relationships', 'tweets.author_id', '=', 'relationships.followed_user_id')
+            ->where('relationships.follower_id', $user->id)
+            ->select('tweets.*')
+            ->with(['author', 'mediable'])
+            ->orderByDesc('tweets.created_at')
+            ->limit(30)
             ->get();
 
-//        $suggestedUsers = User::where
 
         return view('main-content.home', [
             'tweets' => $tweets,
+            'user' => $user,
         ]);
     }
 }

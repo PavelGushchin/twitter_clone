@@ -8,7 +8,7 @@
     <article class="flex">
         <div class="flex-shrink-0">
             <a href="{{ $tweet->author->id }}">
-                <img src="{{ $tweet->author->profile->avatar ?: '/img/default_profile_images/default_profile_normal.png' }}" alt="" class="rounded-3xl" style="width: 48px; height: 48px;" />
+                <img src="{{ $tweet->author->avatar ?: '/img/default_profile_images/default_profile_normal.png' }}" alt="" class="rounded-3xl" style="width: 48px; height: 48px;" />
             </a>
         </div>
 

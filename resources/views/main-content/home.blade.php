@@ -7,8 +7,8 @@
 
     <div class="flex mt-5 px-6">
         <div>
-            <a href="{{ auth()->user()->nickname }}">
-                <img src="{{ auth()->user()->profile->avatar }}" alt="" class="rounded-3xl border border-gray-400" style="width: 48px; height: 48px;">
+            <a href="{{ $user->nickname }}">
+                <img src="{{ $user->avatar }}" alt="" class="rounded-3xl border border-gray-400" style="width: 48px; height: 48px;">
 {{--                <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl">--}}
             </a>
         </div>
@@ -23,7 +23,7 @@
                 disabled: false,
 
                 submit() {
-                    fetch('{{ route('store-tweet') }}', {
+                    fetch('{{ route("store-tweet") }}', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify(this.form)

@@ -36,6 +36,7 @@ class UserSeeder extends Seeder
     {
         $mainUser = User::create([
             'name' => 'Pavel Gushchin',
+            'avatar' => 'https://robohash.org/9cb997367e79d708290d40ab8f71e3b0?set=set1&bgset=bg1&size=200x200',
             'nickname' => 'pavgu1990',
             'email' => 'pavel_gushchin@mail.ru',
             'phone' => '8-312-131-41-22',

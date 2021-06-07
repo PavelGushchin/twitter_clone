@@ -54,7 +54,7 @@ class User extends Authenticatable
 
     public function following()
     {
-        return $this->hasMany(Relationship::class, 'follower_id');
+        return $this->hasMany(Relationship::class, 'follower_id')->with('followed.tweets');
     }
 
     public function likes()

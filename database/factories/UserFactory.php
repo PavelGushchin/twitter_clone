@@ -26,6 +26,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'avatar' => $this->generateAvatarUrl(),
             'nickname' => $this->faker->unique()->userName,
             'email' => $this->faker->unique()->safeEmail,
             'phone' => $this->faker->unique()->phoneNumber,
@@ -35,6 +36,16 @@ class UserFactory extends Factory
             'created_at' => RandomDateTime::create(),
         ];
     }
+
+    protected function generateAvatarUrl()
+    {
+        $hash = md5($this->faker->text);
+        $set = $this->faker->numberBetween(1, 4);
+        $bg = $this->faker->numberBetween(1,2);
+
+        return 'https://robohash.org/' . $hash . '?set=set' . $set . '&bgset=bg' . $bg . '&size=200x200';
+    }
+
 
     /**
      * Indicate that the model's email address should be unverified.
