@@ -7,7 +7,6 @@ use App\Models\User;
 use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 
 class RelationshipSeeder extends Seeder
 {

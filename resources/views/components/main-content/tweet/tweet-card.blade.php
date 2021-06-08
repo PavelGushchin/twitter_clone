@@ -58,13 +58,13 @@
 
                 <div class="w-1/4">
                     <x-retweet-button
-                        number="{{ rand(1,30) }}"
+                        number="{{ $tweet->retweets }}"
                     ></x-retweet-button>
                 </div>
 
                 <div class="w-1/4">
                     <x-like-button
-                        number="{{ rand(1,50) }}"
+                        number="{{ $tweet->likes }}"
                     ></x-like-button>
                 </div>
 

@@ -8,7 +8,6 @@ use App\Models\User;
 use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 
 class RetweetSeeder extends Seeder
 {
@@ -30,7 +29,7 @@ class RetweetSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 50))->get();
+            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 1000))->get();
 
             $tweets->map(function ($tweet) use ($user) {
                 Retweet::create([

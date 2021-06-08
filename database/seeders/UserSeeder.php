@@ -8,7 +8,6 @@ use App\Models\User;
 use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
