@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LikeSeeder::class,
             RetweetSeeder::class,
             ImageSeeder::class,
+            CountTweetActivitySeeder::class,
         ]);
     }
 }

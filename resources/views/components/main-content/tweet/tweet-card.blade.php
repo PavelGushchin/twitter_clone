@@ -52,7 +52,7 @@
 
                 <div class="w-1/4">
                     <x-reply-button
-                        number="{{ rand(1,25) }}"
+                        number="{{ $tweet->replies }}"
                     ></x-reply-button>
                 </div>
 

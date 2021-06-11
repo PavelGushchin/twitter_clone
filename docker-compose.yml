@@ -43,6 +43,7 @@ services:
         image: 'redis:alpine'
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
+        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
         volumes:
             - 'sailredis:/data'
         networks:

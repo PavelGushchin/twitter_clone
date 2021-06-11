@@ -30,7 +30,7 @@ class ReplySeeder extends Seeder
                 return;
             }
 
-            if ($isReply = $this->faker->boolean) {
+            if ($makeTweetAReply = $this->faker->boolean) {
                 $parentTweetIndex = $this->faker->numberBetween(0, $index - 1);
                 $parentTweet = $tweets[$parentTweetIndex];
 

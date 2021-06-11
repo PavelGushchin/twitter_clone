@@ -17,6 +17,9 @@ class CreateTweetsTable extends Migration
             $table->id();
             $table->text('text')->nullable();
             $table->nullableMorphs('mediable');
+            $table->unsignedInteger('likes')->default(0);
+            $table->unsignedInteger('retweets')->default(0);
+            $table->unsignedInteger('replies')->default(0);
             $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('parent_tweet_id')->nullable()->constrained('tweets')->nullOnDelete();
             $table->timestamp('created_at')->index();

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Jobs\AddLike;
 use App\Models\Like;
 use App\Models\Tweet;
 use App\Models\User;
@@ -28,9 +29,9 @@ class LikeSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 2000))->get();
+            $tweetsToBeLiked = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 200))->get();
 
-            $tweets->map(function ($tweet) use ($user) {
+            $tweetsToBeLiked->map(function ($tweet) use ($user) {
                 Like::create([
                     'user_id' => $user->id,
                     'tweet_id' => $tweet->id,

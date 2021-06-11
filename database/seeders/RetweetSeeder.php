@@ -29,9 +29,9 @@ class RetweetSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweets = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 1000))->get();
+            $tweetsForRetweeting = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 100))->get();
 
-            $tweets->map(function ($tweet) use ($user) {
+            $tweetsForRetweeting->map(function ($tweet) use ($user) {
                 Retweet::create([
                     'user_id' => $user->id,
                     'tweet_id' => $tweet->id,
