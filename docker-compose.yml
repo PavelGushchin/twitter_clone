@@ -1,6 +1,6 @@
 version: '3'
 services:
-    twitter.clone.app:
+    app:
         build:
             context: ./docker/8.0
             dockerfile: Dockerfile
@@ -17,22 +17,37 @@ services:
         networks:
             - sail
         depends_on:
-            - pgsql
-    pgsql:
-        image: postgres:13
+            - postgres_srv
+            - redis_srv
+        restart: always
+
+    postgres_srv:
+      image: 'postgres:13'
         ports:
-            - '${FORWARD_DB_PORT:-5432}:5432'
+          - '${FORWARD_DB_PORT:-5432}:5432'
         environment:
-            PGPASSWORD: '${DB_PASSWORD:-secret}'
-            POSTGRES_DB: '${DB_DATABASE}'
-            POSTGRES_USER: '${DB_USERNAME}'
-            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+          PGPASSWORD: '${DB_PASSWORD:-secret}'
+          POSTGRES_DB: '${DB_DATABASE}'
+          POSTGRES_USER: '${DB_USERNAME}'
+          POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
         volumes:
-            - 'sailpgsql:/var/lib/postgresql/data'
+          - 'sailpgsql:/var/lib/postgresql/data'
         networks:
-            - sail
+          - sail
         healthcheck:
-            test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+          test: [ "CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}" ]
+          retries: 3
+          timeout: 5s
+
+    redis_srv:
+        image: redis:6.2-alpine
+        ports:
+          - '${REDIS_PORT:-6379}:6379'
+        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+        volumes:
+          - 'sailredis:/data'
+        networks:
+          - sail
 
 networks:
     sail:
@@ -40,4 +55,6 @@ networks:
 
 volumes:
     sailpgsql:
+        driver: local
+    sailredis:
         driver: local
