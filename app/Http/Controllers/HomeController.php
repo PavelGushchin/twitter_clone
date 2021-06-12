@@ -28,6 +28,7 @@ class HomeController extends Controller
 //                $join->on('tweets.id', '=', 'retweets.tweet_id');
 //            })
 //            ->select('tweets.*', 'likes.likes', 'retweets.retweets')
+            ->select('tweets.*')
             ->with(['author', 'mediable'])
             ->orderByDesc('tweets.created_at')
             ->limit(30)

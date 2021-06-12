@@ -16,7 +16,10 @@ class CountTweetActivitySeeder extends Seeder
      */
     public function run()
     {
-        $tweets = Tweet::all();
+        $tweets = Tweet::where('likes', 0)
+            ->where('retweets', 0)
+            ->where('replies', 0)
+            ->get();
 
         $tweets->map(function ($tweet) {
             $likes = Like::where('tweet_id', $tweet->id)->count();

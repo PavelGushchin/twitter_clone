@@ -43,7 +43,7 @@ class UserFactory extends Factory
         $set = $this->faker->numberBetween(1, 4);
         $bg = $this->faker->numberBetween(1,2);
 
-        return 'https://robohash.org/' . $hash . '?set=set' . $set . '&bgset=bg' . $bg . '&size=200x200';
+        return 'https://robohash.org/' . $hash . '?set=set' . $set . '&bgset=bg' . $bg;
     }
 
 

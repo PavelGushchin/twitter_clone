@@ -1,7 +1,7 @@
 <div class="flex items-center cursor-pointer">
     <div class="p-2">
         <a href="{{ auth()->user()->slug }}">
-            <img src="/img/default_profile_images/default_profile_normal.png" alt="" class="rounded-3xl" />
+            <img src="/img/default_profile_images/48x48.png" alt="" class="rounded-3xl" />
         </a>
     </div>
 
