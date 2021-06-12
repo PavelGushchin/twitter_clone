@@ -3,13 +3,16 @@
     $background_color = 'bg-' . $color . '-100';
 @endphp
 
-<div class="inline hover:{{ $text_color }} cursor-pointer"
+<div class="inline hover:{{ $text_color }} cursor-pointer tooltip"
      x-data="{
         background_color: '{{ $background_color }}'
      }"
      @mouseenter="$refs.svg.classList.add(background_color)"
      @mouseleave="$refs.svg.classList.remove(background_color)"
 >
+
+    <span class="tooltiptext" style="margin-left: 0px">Like</span>
+
     <svg viewBox="0 0 24 24"
          class="inline w-8 h-8 fill-current p-1.5 rounded-2xl hover:{{ $background_color }}"
          x-ref="svg"

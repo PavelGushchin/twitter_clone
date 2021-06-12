@@ -7,14 +7,14 @@
 
     <article class="flex">
         <div class="flex-shrink-0">
-            <a href="{{ $tweet->author->id }}">
-                <img src="{{ $tweet->author->avatar ?: '/img/default_profile_images/default_profile_normal.png' }}" alt="" class="rounded-3xl" style="width: 48px; height: 48px;" />
+            <a href="{{ $tweet->author->nickname }}">
+                <img src="{{ $tweet->author->avatar ? asset($tweet->author->avatar . '&size=48x48') : asset('/img/default_profile_images/48x48.png') }}" alt="" class="rounded-3xl" style="width: 48px; height: 48px;" />
             </a>
         </div>
 
         <div class="pl-4">
             <div>
-                <a href="{{ $tweet->author->id }}">
+                <a href="{{ $tweet->author->nickname }}">
                     <span class="font-bold">
                         {{ $tweet->author->name }}
                     </span>
@@ -23,7 +23,7 @@
                     </span>
                 </a>
 
-                <a href="{{ $tweet->author->id }}/status/{{ $tweet->id }}" class="text-gray-500">
+                <a href="{{ $tweet->author->nickname }}/status/{{ $tweet->id }}" class="text-gray-500">
                     <span>
                         ·
                     </span>
@@ -33,7 +33,7 @@
                 </a>
             </div>
 
-            <a href="{{ $tweet->author->id }}/status/{{ $tweet->id }}">
+            <a href="{{ $tweet->author->nickname }}/status/{{ $tweet->id }}">
                 <div class="pb-3">
                     {{ $tweet->text }}
                 </div>
