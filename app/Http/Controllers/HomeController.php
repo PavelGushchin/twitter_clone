@@ -29,10 +29,20 @@ class HomeController extends Controller
 //            })
 //            ->select('tweets.*', 'likes.likes', 'retweets.retweets')
             ->select('tweets.*')
+            ->addSelect(['isLiked' => Like::select(DB::raw('true'))
+                ->whereColumn('tweet_id', 'tweets.id')
+                ->where('user_id', $user->id)
+            ])
+            ->addSelect(['isRetweeted' => Retweet::select(DB::raw('true'))
+                ->whereColumn('tweet_id', 'tweets.id')
+                ->where('user_id', $user->id)
+            ])
             ->with(['author', 'mediable'])
             ->orderByDesc('tweets.created_at')
-            ->limit(30)
+            ->limit(20)
             ->get();
+
+//        dd($tweets);
 
         return view('main-content.home', [
             'tweets' => $tweets,

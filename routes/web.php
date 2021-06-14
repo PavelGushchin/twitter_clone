@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])
-    ->middleware(['auth'])
     ->name('home');
 
 Route::get('explore', [ExploreController::class, 'index'])
-    ->middleware('auth')
     ->name('explore');
 
 Route::get('notifications', function () {
@@ -45,6 +44,12 @@ Route::get('profile', function () {
 })->name('profile');
 
 
-Route::post('/store-tweet', [TweetController::class, 'store'])
-    ->middleware('auth')
-    ->name('store-tweet');
+Route::post('tweets', [TweetController::class, 'store'])
+    ->name('tweets.store');
+
+
+Route::post('likes/{tweet}', [LikeController::class, 'addLike'])
+    ->name('likes.add');
+
+Route::delete('likes/{tweet}', [LikeController::class, 'removeLike'])
+    ->name('likes.remove');

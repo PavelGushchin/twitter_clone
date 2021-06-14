@@ -23,7 +23,7 @@ class ImageFactory extends Factory
     {
         return [
             'filename' => '',
-            'description' => $this->faker->sentence,
+            'description' => $this->faker->sentence(),
         ];
     }
 }

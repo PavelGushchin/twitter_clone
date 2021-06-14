@@ -24,8 +24,8 @@ class ProfileFactory extends Factory
         return [
             'birth_date' => $this->faker->date(),
             'bio' => $this->faker->realText(),
-            'location' => $this->faker->city,
-            'website' => 'https://' . $this->faker->domainName,
+            'location' => $this->faker->city(),
+            'website' => 'https://' . $this->faker->domainName(),
         ];
     }
 }

@@ -65,6 +65,7 @@
                 <div class="w-1/4">
                     <x-like-button
                         number="{{ $tweet->likes }}"
+                        isLiked="{{ $tweet->isLiked }}"
                     ></x-like-button>
                 </div>
 

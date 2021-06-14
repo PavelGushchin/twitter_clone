@@ -25,11 +25,11 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'avatar' => $this->generateAvatarUrl(),
-            'nickname' => $this->faker->unique()->userName,
-            'email' => $this->faker->unique()->safeEmail,
-            'phone' => $this->faker->unique()->phoneNumber,
+            'nickname' => $this->faker->unique()->userName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->unique()->phoneNumber(),
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
@@ -39,7 +39,7 @@ class UserFactory extends Factory
 
     protected function generateAvatarUrl()
     {
-        $hash = md5($this->faker->text);
+        $hash = md5($this->faker->text());
         $set = $this->faker->numberBetween(1, 4);
         $bg = $this->faker->numberBetween(1,2);
 

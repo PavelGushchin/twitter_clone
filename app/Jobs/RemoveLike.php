@@ -5,22 +5,20 @@ namespace App\Jobs;
 use App\Models\Like;
 use App\Models\Tweet;
 use App\Models\User;
-use Carbon\Carbon;
+use DB;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\DB;
 
-class AddLike implements ShouldQueue
+class RemoveLike implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     private User $user;
     private Tweet $tweet;
-
 
     /**
      * Create a new job instance.
@@ -29,8 +27,8 @@ class AddLike implements ShouldQueue
      */
     public function __construct(User $user, Tweet $tweet)
     {
-        $this->user = $user->withoutRelations();
-        $this->tweet = $tweet->withoutRelations();
+        $this->user = $user;
+        $this->tweet = $tweet;
     }
 
     /**
@@ -40,24 +38,17 @@ class AddLike implements ShouldQueue
      */
     public function handle()
     {
-        $likeExists = Like::where([
-            'user_id' => $this->user->id,
-            'tweet_id' => $this->tweet->id,
-        ])->exists();
-
-        if ($likeExists) {
-            logger("Like already exists for user '{$this->user->nickname}' (id: {$this->user->id}) and tweet id: {$this->tweet->id}");
-            return;
-        }
-
         DB::transaction(function () {
-            Like::create([
+            $numOfDeletedLikes = Like::where([
                 'user_id' => $this->user->id,
                 'tweet_id' => $this->tweet->id,
-                'created_at' => Carbon::now(),
-            ]);
+            ])->delete();
 
-            $this->tweet->increment('likes');
+            if ($numOfDeletedLikes == 1) {
+                $this->tweet->decrement('likes');
+            } else {
+                logger("Trying to remove like which doesn't exist. User id: {$this->user->id} (nickname: {$this->user->nickname}) and tweet id: {$this->tweet->id}");
+            }
         });
     }
 }
