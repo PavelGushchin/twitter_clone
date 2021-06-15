@@ -64,9 +64,11 @@
 
                 <div class="w-1/4">
                     <x-like-button
-                        number="{{ $tweet->likes }}"
-                        isLiked="{{ $tweet->isLiked }}"
-                    ></x-like-button>
+                        :tweet-id="$tweet->id"
+                        :likes-count="$tweet->likes"
+                        :liked-by-me="$tweet->is_liked"
+                    >
+                    </x-like-button>
                 </div>
 
                 <div class="w-1/4">

@@ -7,9 +7,9 @@ use Illuminate\View\Component;
 class LikeButton extends Component
 {
     public function __construct(
-        public $color = 'red',
-        public $number = 0,
-        public $isLiked = false,
+        public $tweetId,
+        public $likesCount,
+        public $likedByMe
     ){}
 
     public function render()
