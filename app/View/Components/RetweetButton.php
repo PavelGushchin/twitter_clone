@@ -7,8 +7,9 @@ use Illuminate\View\Component;
 class RetweetButton extends Component
 {
     public function __construct(
-        public $color = 'green',
-        public $number = 0,
+        public $tweetId,
+        public $retweetsCount,
+        public $retweetedByMe,
     ){}
 
     public function render()

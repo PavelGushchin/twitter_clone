@@ -58,7 +58,9 @@
 
                 <div class="w-1/4">
                     <x-retweet-button
-                        number="{{ $tweet->retweets }}"
+                        :tweet-id="$tweet->id"
+                        :retweets-count="$tweet->retweets"
+                        :retweeted-by-me="$tweet->is_retweeted"
                     ></x-retweet-button>
                 </div>
 

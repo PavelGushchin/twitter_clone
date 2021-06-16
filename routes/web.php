@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\RetweetController;
 use App\Http\Controllers\TweetController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,3 +54,10 @@ Route::post('likes/{tweet}', [LikeController::class, 'addLike'])
 
 Route::delete('likes/{tweet}', [LikeController::class, 'removeLike'])
     ->name('likes.remove');
+
+
+Route::post('retweets/{tweet}', [RetweetController::class, 'addRetweet'])
+    ->name('retweets.add');
+
+Route::delete('retweets/{tweet}', [RetweetController::class, 'removeRetweet'])
+    ->name('retweets.remove');
