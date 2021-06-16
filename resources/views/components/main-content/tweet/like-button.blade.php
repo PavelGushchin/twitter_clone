@@ -48,7 +48,7 @@
 
     @if ($likesCount > 0)
         <div class="inline text-sm"
-            :class="likedByMe ? 'text-red-500' : ''"
+            :class="likedByMe ? 'text-red-500 font-bold' : ''"
             x-text="likesCount"
         >
             {{ $likesCount }}

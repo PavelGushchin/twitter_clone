@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Like;
 use App\Models\Tweet;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class LikeController extends Controller
