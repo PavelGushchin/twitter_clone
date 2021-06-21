@@ -1,4 +1,4 @@
-<x-main-layout>
+<x-main-layout :whoToFollow="$whoToFollow">
     <div class="text-2xl px-6 font-bold">
         Home
     </div>
@@ -23,7 +23,7 @@
                 disabled: false,
 
                 submit() {
-                    fetch('{{ route("tweets.store") }}', {
+                    fetch('{{ route("tweet.store") }}', {
                         method: 'POST',
                         headers: {'Content-Type': 'application/json'},
                         body: JSON.stringify(this.form)

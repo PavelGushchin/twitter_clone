@@ -6,7 +6,7 @@
         addLike: function () {
             this.retweetedByMe = 1;
             this.retweetsCount += 1;
-            fetch('{{ route("retweets.add", $tweetId) }}', {
+            fetch('{{ route("retweet.add", $tweetId) }}', {
                 method: 'post',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -17,7 +17,7 @@
         removeLike: function () {
             this.retweetedByMe = 0;
             this.retweetsCount -= 1;
-            fetch('{{ route("retweets.remove", $tweetId) }}', {
+            fetch('{{ route("retweet.remove", $tweetId) }}', {
                 method: 'delete',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({

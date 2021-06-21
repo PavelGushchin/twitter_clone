@@ -4,13 +4,13 @@
     </div>
     <hr>
 
-    <x-right-sidebar.suggested-user />
-    <x-right-sidebar.suggested-user />
-    <x-right-sidebar.suggested-user />
+    @foreach($whoToFollow as $user)
+        <x-right-sidebar.suggested-user :user="$user" />
+    @endforeach
 
-    <div class="p-4">
-        <a href="/i/connect_people?user_id={{ auth()->user()->id }}" class="text-blue-500 font-bold">
+    <a href="/i/connect_people?user_id={{ auth()->id() }}">
+        <div class="p-4 text-light-blue-500 font-bold hover:bg-gray-200 rounded-b-xl">
             Show more
-        </a>
-    </div>
+        </div>
+    </a>
 </div>

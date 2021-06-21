@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tweet;
+use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class TweetController extends Controller
@@ -14,16 +16,19 @@ class TweetController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'text' => 'string|required|max:274'
         ]);
 
-//        $validated['text'] = Str::random(10);
+        $tweet = DB::transaction(function () use ($request) {
+            auth()->user()->increment('tweets_count');
 
-        $tweet = Tweet::create([
-            'text' => $validated['text'],
-            'author_id' => auth()->user()->id
-        ]);
+            return Tweet::create([
+                'text' => $request->text,
+                'author_id' => auth()->id(),
+                'created_at' => Carbon::now(),
+            ])->with('author');
+        });
 
         return $tweet;
     }

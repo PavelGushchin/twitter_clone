@@ -6,24 +6,19 @@
         addLike: function () {
             this.likedByMe = 1;
             this.likesCount += 1;
-            fetch('{{ route("likes.add", $tweetId) }}', {
-                method: 'post',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    _token: '{{ csrf_token() }}'
-                })
-            });
+            fetch('{{ route("like.add", $tweetId) }}', this.postData);
         },
         removeLike: function () {
             this.likedByMe = 0;
             this.likesCount -= 1;
-            fetch('{{ route("likes.remove", $tweetId) }}', {
-                method: 'delete',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                    _token: '{{ csrf_token() }}'
-                })
-            });
+            fetch('{{ route("like.remove", $tweetId) }}', this.postData);
+        },
+        postData: {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                _token: '{{ csrf_token() }}'
+            })
         }
      }"
      @click="likedByMe ? removeLike() : addLike()"

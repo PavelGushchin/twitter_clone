@@ -1,5 +1,3 @@
-@props(['tweet'])
-
 <div class="px-6 py-6 my-4 shadow">
     <div>
 

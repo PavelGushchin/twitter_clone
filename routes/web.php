@@ -3,8 +3,10 @@
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\RetweetController;
 use App\Http\Controllers\TweetController;
+use App\Models\Relationship;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,19 +47,43 @@ Route::get('profile', function () {
 })->name('profile');
 
 
-Route::post('tweets', [TweetController::class, 'store'])
-    ->name('tweets.store');
+Route::post('tweet', [TweetController::class, 'store'])
+    ->name('tweet.store');
 
 
-Route::post('likes/{tweet}', [LikeController::class, 'addLike'])
-    ->name('likes.add');
+Route::post('like/{tweet}', [LikeController::class, 'addLike'])
+    ->name('like.add');
 
-Route::delete('likes/{tweet}', [LikeController::class, 'removeLike'])
-    ->name('likes.remove');
+Route::delete('like/{tweet}', [LikeController::class, 'removeLike'])
+    ->name('like.remove');
+
+Route::get('like/{tweet}', function () {
+    abort(404);
+});
 
 
-Route::post('retweets/{tweet}', [RetweetController::class, 'addRetweet'])
-    ->name('retweets.add');
+Route::post('retweet/{tweet}', [RetweetController::class, 'addRetweet'])
+    ->name('retweet.add');
 
-Route::delete('retweets/{tweet}', [RetweetController::class, 'removeRetweet'])
-    ->name('retweets.remove');
+Route::delete('retweet/{tweet}', [RetweetController::class, 'removeRetweet'])
+    ->name('retweet.remove');
+
+Route::get('retweet/{tweet}', function () {
+    abort(404);
+});
+
+
+Route::post('follow/{user}', [RelationshipController::class, 'follow'])
+    ->name('follow.user');
+
+Route::get('follow/{user}', function () {
+    abort(404);
+});
+
+
+Route::post('unfollow/{user}', [RelationshipController::class, 'unfollow'])
+    ->name('unfollow.user');
+
+Route::get('unfollow/{user}', function () {
+    abort(404);
+});
