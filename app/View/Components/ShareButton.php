@@ -13,6 +13,6 @@ class ShareButton extends Component
 
     public function render()
     {
-        return view('components.main-content.tweet.share-button');
+        return view('components.main-content.tweets.activity-buttons.share');
     }
 }

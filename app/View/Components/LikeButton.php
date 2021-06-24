@@ -14,6 +14,6 @@ class LikeButton extends Component
 
     public function render()
     {
-        return view('components.main-content.tweet.like-button');
+        return view('components.main-content.tweets.activity-buttons.like');
     }
 }

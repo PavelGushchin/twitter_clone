@@ -13,6 +13,6 @@ class ReplyButton extends Component
 
     public function render()
     {
-        return view('components.main-content.tweet.reply-button');
+        return view('components.main-content.tweets.activity-buttons.reply');
     }
 }

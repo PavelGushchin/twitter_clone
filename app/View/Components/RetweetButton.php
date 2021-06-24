@@ -14,6 +14,6 @@ class RetweetButton extends Component
 
     public function render()
     {
-        return view('components.main-content.tweet.retweet-button');
+        return view('components.main-content.tweets.activity-buttons.retweet');
     }
 }

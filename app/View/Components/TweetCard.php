@@ -12,6 +12,6 @@ class TweetCard extends Component
 
     public function render()
     {
-        return view('components.main-content.tweet.tweet-card');
+        return view('components.main-content.tweets.tweet-card');
     }
 }
