@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Relationship;
 use App\Models\User;
 use DB;
-use Illuminate\Http\Request;
 
 class RelationshipController extends Controller
 {
     public function follow(User $user)
     {
+        if ($user->id == auth()->id()) {
+            abort(404);
+        }
+
         DB::transaction(function () use ($user) {
             Relationship::create([
                 'followed_user_id' => $user->id,
@@ -25,12 +28,14 @@ class RelationshipController extends Controller
     public function unfollow(User $user)
     {
         DB::transaction(function () use ($user) {
-            Relationship::where([
+            $numOfDeletedRows = Relationship::where([
                 'followed_user_id' => $user->id,
                 'follower_id' => auth()->id(),
             ])->delete();
 
-            auth()->user()->decrement('following');
+            if ($numOfDeletedRows > 0) {
+                auth()->user()->decrement('following', $numOfDeletedRows);
+            }
         });
     }
 }

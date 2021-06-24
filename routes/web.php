@@ -6,6 +6,7 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\RelationshipController;
 use App\Http\Controllers\RetweetController;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\WhoToFollowController;
 use App\Models\Relationship;
 use Illuminate\Support\Facades\Route;
 
@@ -57,10 +58,6 @@ Route::post('like/{tweet}', [LikeController::class, 'addLike'])
 Route::delete('like/{tweet}', [LikeController::class, 'removeLike'])
     ->name('like.remove');
 
-Route::get('like/{tweet}', function () {
-    abort(404);
-});
-
 
 Route::post('retweet/{tweet}', [RetweetController::class, 'addRetweet'])
     ->name('retweet.add');
@@ -68,22 +65,13 @@ Route::post('retweet/{tweet}', [RetweetController::class, 'addRetweet'])
 Route::delete('retweet/{tweet}', [RetweetController::class, 'removeRetweet'])
     ->name('retweet.remove');
 
-Route::get('retweet/{tweet}', function () {
-    abort(404);
-});
-
 
 Route::post('follow/{user}', [RelationshipController::class, 'follow'])
     ->name('follow.user');
 
-Route::get('follow/{user}', function () {
-    abort(404);
-});
-
-
 Route::post('unfollow/{user}', [RelationshipController::class, 'unfollow'])
     ->name('unfollow.user');
 
-Route::get('unfollow/{user}', function () {
-    abort(404);
-});
+
+Route::get('suggest/users', [WhoToFollowController::class, 'suggestUsers'])
+    ->name('suggest.users');

@@ -15,7 +15,6 @@ class HomeController extends Controller
     {
         return view('main-content.home', [
             'tweets' => $this->tweetsFromUsersWhichIFollow(),
-            'whoToFollow' => $this->suggestedUsersToFollow(),
             'user' => auth()->user(),
         ]);
     }
@@ -52,24 +51,5 @@ class HomeController extends Controller
             ->get();
 
         return $tweets;
-    }
-
-
-    public function suggestedUsersToFollow()
-    {
-        $alreadyFollowedUsers = Relationship::select('followed_user_id')
-            ->where(['follower_id' => auth()->id(),])
-            ->get()
-            ->pluck('followed_user_id');
-
-        $whoToFollow = User::where('id', '<>', auth()->id())
-            ->whereNotIn('id', $alreadyFollowedUsers)
-            ->select('id', 'name', 'nickname', 'avatar', 'followers')
-            ->inRandomOrder()
-            ->limit(5)
-            ->get()
-            ->sortByDesc('followers');
-
-        return $whoToFollow;
     }
 }
