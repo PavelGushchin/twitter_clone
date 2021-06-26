@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profile;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
+use Carbon\Carbon;
+use DB;
+use Faker;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,11 +42,26 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
-        Auth::login($user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]));
+        $user = DB::transaction(function () use ($request) {
+            $faker = Faker\Factory::create();
+
+            $user = User::create([
+                'name' => $request->name,
+                'nickname' => $faker->unique()->userName(), // TODO: replace this
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'created_at' => Carbon::now(),
+            ]);
+
+            Profile::create([
+                'birth_date' => $faker->date('Y-m-d', '-10 years'), // TODO: replace this
+                'user_id' => $user->id,
+            ]);
+
+            return $user;
+        });
+
+        Auth::login($user);
 
         event(new Registered($user));
 

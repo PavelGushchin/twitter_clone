@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,6 +14,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable, SoftDeletes;
 
     protected $guarded = [];
+    public $timestamps = false;
 
     /**
      * The attributes that should be hidden for arrays.
@@ -72,5 +74,11 @@ class User extends Authenticatable
     public function tagedOnImages()
     {
         return $this->belongsToMany(Image::class, 'users_on_images');
+    }
+
+
+    public function getCreatedAtAttribute($date)
+    {
+        return new Carbon($date);
     }
 }
