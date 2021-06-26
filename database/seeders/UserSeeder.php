@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
             'email' => 'pavel_gushchin@mail.ru',
             'phone' => '8-312-131-41-22',
             'password' => Hash::make('12345678'),
-            'created_at' => RandomDateTime::create(),
+            'created_at' => RandomDateTime::generate(),
         ]);
 
         Profile::factory()->for($mainUser)->create();

@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
             RetweetSeeder::class,
             ImageSeeder::class,
             CountTweetActivitySeeder::class,
+            CountUserTweetsSeeder::class,
+            CountUserFollowersSeeder::class,
         ]);
     }
 }

@@ -16,9 +16,9 @@ class CountTweetActivitySeeder extends Seeder
      */
     public function run()
     {
-        $tweets = Tweet::where('likes', 0)
-            ->where('retweets', 0)
-            ->where('replies', 0)
+        $tweets = Tweet::where('likes_count', 0)
+            ->where('retweets_count', 0)
+            ->where('replies_count', 0)
             ->get();
 
         $tweets->map(function ($tweet) {
@@ -27,9 +27,9 @@ class CountTweetActivitySeeder extends Seeder
             $replies = Tweet::where('parent_tweet_id', $tweet->id)->count();
 
             $tweet->update([
-                'likes' => $likes,
-                'retweets' => $retweets,
-                'replies' => $replies,
+                'likes_count' => $likes,
+                'retweets_count' => $retweets,
+                'replies_count' => $replies,
             ]);
         });
     }

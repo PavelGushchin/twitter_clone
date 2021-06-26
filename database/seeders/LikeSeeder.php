@@ -35,7 +35,7 @@ class LikeSeeder extends Seeder
                 Like::create([
                     'user_id' => $user->id,
                     'tweet_id' => $tweet->id,
-                    'created_at' => RandomDateTime::create($tweet->createdAt),
+                    'created_at' => RandomDateTime::generate($tweet->createdAt),
                 ]);
             });
         });

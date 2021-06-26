@@ -33,7 +33,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => Hash::make('12345678'),
             'remember_token' => Str::random(10),
-            'created_at' => RandomDateTime::create(),
+            'created_at' => RandomDateTime::generate(),
         ];
     }
 

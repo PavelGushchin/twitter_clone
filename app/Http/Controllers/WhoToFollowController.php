@@ -16,12 +16,10 @@ class WhoToFollowController extends Controller
 
         $whoToFollow = User::where('id', '<>', auth()->id())
             ->whereNotIn('id', $alreadyFollowedUsers)
-            ->select('id', 'name', 'nickname', 'avatar', 'followers')
+            ->select('id', 'name', 'nickname', 'avatar')
             ->inRandomOrder()
             ->limit(5)
-            ->get()
-            ->sortByDesc('followers')
-            ->values();
+            ->get();
 
         return $whoToFollow;
     }

@@ -13,7 +13,7 @@ class RandomDateTime
      * @param string|Carbon $startDate
      * @return Carbon
      */
-    public static function create($startDate = '-3 years')
+    public static function generate($startDate = '-3 years')
     {
         if (self::$faker == null) {
             self::$faker = Faker\Factory::create();

@@ -15,12 +15,12 @@ class CountUserFollowersSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::all();
+        $users = User::with('profile')->get();
 
         $users->map(function ($user) {
-            $user->update([
-                'followers' => Relationship::where('followed_user_id', $user->id)->count(),
-                'following' => Relationship::where('follower_id', $user->id)->count(),
+            $user->profile->update([
+                'followers_count' => Relationship::where('followed_user_id', $user->id)->count(),
+                'following_count' => Relationship::where('follower_id', $user->id)->count(),
             ]);
         });
     }

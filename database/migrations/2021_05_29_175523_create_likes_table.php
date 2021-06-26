@@ -18,7 +18,6 @@ class CreateLikesTable extends Migration
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('tweet_id')->constrained()->cascadeOnDelete();
             $table->timestamp('created_at')->nullable();
-            $table->softDeletes();
         });
     }
 

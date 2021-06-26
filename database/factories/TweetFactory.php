@@ -24,7 +24,7 @@ class TweetFactory extends Factory
     {
         return [
             'text' => $this->faker->realText(280),
-            'created_at' => RandomDateTime::create(),
+            'created_at' => RandomDateTime::generate(),
         ];
     }
 }

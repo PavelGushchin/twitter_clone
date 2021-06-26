@@ -35,7 +35,7 @@ class RelationshipSeeder extends Seeder
                 Relationship::create([
                     'followed_user_id' => $user->id,
                     'follower_id' => $follower->id,
-                    'created_at' => RandomDateTime::create(),
+                    'created_at' => RandomDateTime::generate(),
                 ]);
             });
         });
