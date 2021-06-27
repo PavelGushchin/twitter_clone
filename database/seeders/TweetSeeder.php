@@ -22,7 +22,7 @@ class TweetSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $numOfTweets = $this->faker->numberBetween(0, 20);
+            $numOfTweets = $this->faker->numberBetween(0, 200);
 
             for ($i = 0; $i < $numOfTweets; $i++) {
                 Tweet::factory(['author_id' => $user->id])->create();

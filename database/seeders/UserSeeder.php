@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Profile;
-use App\Models\Tweet;
 use App\Models\User;
 use Database\Seeders\Helpers\RandomDateTime;
 use Faker;
@@ -44,16 +43,13 @@ class UserSeeder extends Seeder
         ]);
 
         Profile::factory()->for($mainUser)->create();
-        Tweet::factory()->count(20)->for($mainUser, 'author')->create();
     }
 
 
-    protected function createOtherUsers($numOfUsers = 100, $maxTweetsForUser = 200)
+    protected function createOtherUsers($numOfUsers = 100)
     {
-        for ($i = 1; $i <= $numOfUsers; $i++) {
-            $numOfTweets = $this->faker->numberBetween(0, $maxTweetsForUser);
-
-            User::factory()->hasProfile()->hasTweets($numOfTweets)->create();
+        for ($i = 0; $i < $numOfUsers; $i++) {
+            User::factory()->hasProfile()->create();
         }
     }
 }

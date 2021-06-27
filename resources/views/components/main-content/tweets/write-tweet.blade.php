@@ -1,7 +1,3 @@
-@php
-    $user = auth()->user();
-@endphp
-
 <hr class="mt-2">
 
 <div class="flex mt-5 px-6">
@@ -18,27 +14,30 @@
                 _token: '{{ csrf_token() }}'
             },
 
-            disabled: false,
-
             submit() {
-                fetch('{{ route("tweet.store") }}', {
-                    method: 'POST',
+                fetch('{{ route("tweets.store") }}', {
+                    method: 'post',
                     headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify(this.form)
                 })
                 .then(response => response.json())
                 .then(tweet => {
                     this.form.text = ''
+                    this.newTweet = tweet
                 })
-            }
+            },
+
+            newTweet: null
         }"
+
+        x-init="$watch('newTweet', tweet => $dispatch('new-tweet', tweet))"
 
         @submit.prevent="submit()"
     >
 
-        <textarea name="tweet" id="tweet" rows="2"
-                  class="w-full resize-none text-gray-900 text-lg rounded focus:border-transparent text-xl"
+        <textarea class="w-full resize-none text-gray-900 text-lg rounded focus:border-transparent text-xl"
                   placeholder="What's happening?"
+                  rows="2"
                   x-model="form.text"
         ></textarea>
 

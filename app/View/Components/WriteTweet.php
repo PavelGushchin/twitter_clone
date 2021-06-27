@@ -6,9 +6,11 @@ use Illuminate\View\Component;
 
 class WriteTweet extends Component
 {
+    public $user;
+
     public function __construct()
     {
-        //
+        $this->user = auth()->user();
     }
 
     public function render()

@@ -48,27 +48,26 @@ Route::get('profile', function () {
 })->name('profile');
 
 
-Route::post('tweet', [TweetController::class, 'store'])
-    ->name('tweet.store');
+Route::get('tweets/homepage', [TweetController::class, 'getTweetsForHomepage'])
+    ->name('tweets.homepage');
+Route::post('tweets', [TweetController::class, 'store'])
+    ->name('tweets.store');
 
 
 Route::post('like/{tweet}', [LikeController::class, 'addLike'])
     ->name('like.add');
-
 Route::delete('like/{tweet}', [LikeController::class, 'removeLike'])
     ->name('like.remove');
 
 
 Route::post('retweet/{tweet}', [RetweetController::class, 'addRetweet'])
     ->name('retweet.add');
-
 Route::delete('retweet/{tweet}', [RetweetController::class, 'removeRetweet'])
     ->name('retweet.remove');
 
 
 Route::post('follow/{user}', [RelationshipController::class, 'follow'])
     ->name('follow.user');
-
 Route::post('unfollow/{user}', [RelationshipController::class, 'unfollow'])
     ->name('unfollow.user');
 
