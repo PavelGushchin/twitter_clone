@@ -22,8 +22,6 @@ class ReplySeeder extends Seeder
      */
     public function run()
     {
-        $this->sortTweetsInDatabaseByDate();
-
         $tweets = Tweet::all();
         $tweets->each(function ($tweet, $index) use ($tweets) {
             if ($index == 0) {
@@ -38,20 +36,6 @@ class ReplySeeder extends Seeder
                     'parent_tweet_id' => $parentTweet->id,
                 ]);
             }
-        });
-
-    }
-
-
-    protected function sortTweetsInDatabaseByDate()
-    {
-        $tweets = Tweet::orderBy('created_at')->get();
-
-        Tweet::truncate();
-
-        $tweets->each(function ($tweet, $index) {
-            $tweet->id = $index + 1;
-            Tweet::create($tweet->toArray());
         });
     }
 }

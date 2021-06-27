@@ -16,9 +16,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             RelationshipSeeder::class,
-            ReplySeeder::class,
+            TweetSeeder::class,
             LikeSeeder::class,
             RetweetSeeder::class,
+            ReplySeeder::class,
             ImageSeeder::class,
             CountTweetActivitySeeder::class,
             CountUserTweetsSeeder::class,
