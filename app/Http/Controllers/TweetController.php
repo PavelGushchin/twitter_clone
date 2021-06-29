@@ -14,11 +14,12 @@ class TweetController extends Controller
     public function getTweetsForHomepage()
     {
         $myTweets = Tweet::where('author_id', auth()->id())
-            ->addSelect(['is_liked' => Like::select(DB::raw('true'))
+            ->whereNull('parent_tweet_id')
+            ->addSelect(['is_liked_by_me' => Like::select(DB::raw('true'))
                 ->whereColumn('tweet_id', 'tweets.id')
                 ->where('user_id', auth()->id())
             ])
-            ->addSelect(['is_retweeted' => Retweet::select(DB::raw('true'))
+            ->addSelect(['is_retweeted_by_me' => Retweet::select(DB::raw('true'))
                 ->whereColumn('tweet_id', 'tweets.id')
                 ->where('user_id', auth()->id())
             ])
@@ -26,7 +27,6 @@ class TweetController extends Controller
             ->orderByDesc('created_at')
             ->limit(20)
             ->get();
-
 
 //        $likes = Like::select('tweet_id', DB::raw('count(*) as likes'))
 //            ->groupBy('tweet_id');
@@ -36,6 +36,7 @@ class TweetController extends Controller
 
         $tweetsFromOthers = Tweet::join('relationships', 'tweets.author_id', '=', 'relationships.followed_user_id')
             ->where('relationships.follower_id', auth()->id())
+            ->whereNull('parent_tweet_id')
 //            ->joinSub($likes, 'likes', function ($join) {
 //                $join->on('tweets.id', '=', 'likes.tweet_id');
 //            })
@@ -43,11 +44,11 @@ class TweetController extends Controller
 //                $join->on('tweets.id', '=', 'retweets.tweet_id');
 //            })
 //            ->select('tweets.*', 'likes.likes', 'retweets.retweets')
-            ->addSelect(['is_liked' => Like::select(DB::raw('true'))
+            ->addSelect(['is_liked_by_me' => Like::select(DB::raw('true'))
                 ->whereColumn('tweet_id', 'tweets.id')
                 ->where('user_id', auth()->id())
             ])
-            ->addSelect(['is_retweeted' => Retweet::select(DB::raw('true'))
+            ->addSelect(['is_retweeted_by_me' => Retweet::select(DB::raw('true'))
                 ->whereColumn('tweet_id', 'tweets.id')
                 ->where('user_id', auth()->id())
             ])
@@ -65,6 +66,7 @@ class TweetController extends Controller
             ->sortByDesc('created_at')
             ->take(20)
             ->values();
+
 
         return $allTweets;
     }

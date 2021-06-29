@@ -6,7 +6,34 @@
 
     <div x-data="{
             tweets: [],
-            isLoading: true
+            isLoading: true,
+            addLike: function (tweet) {
+                tweet.is_liked_by_me = true;
+                tweet.likes_count += 1;
+                fetch('/like/' + tweet.id, this.postData);
+            },
+            removeLike: function (tweet) {
+                tweet.is_liked_by_me = false;
+                tweet.likes_count -= 1;
+                fetch('/like/remove/' + tweet.id, this.postData);
+            },
+            addRetweet: function (tweet) {
+                tweet.is_retweeted_by_me = true;
+                tweet.retweets_count += 1;
+                fetch('/retweet/' + tweet.id, this.postData);
+            },
+            removeRetweet: function (tweet) {
+                tweet.is_retweeted_by_me = false;
+                tweet.retweets_count -= 1;
+                fetch('/retweet/remove/' + tweet.id, this.postData);
+            },
+            postData: {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    _token: '{{ csrf_token() }}'
+                })
+            }
         }"
         x-init="
             fetch('{{ route("tweets.homepage") }}')
@@ -20,7 +47,7 @@
             tweets.splice(0, 0, $event.detail)
         "
     >
-        <x-write-tweet></x-write-tweet>
+        <x-write-tweet />
 
         <template x-for="tweet in tweets" :key="tweet.id">
             <x-tweet-card tweet="tweet" />

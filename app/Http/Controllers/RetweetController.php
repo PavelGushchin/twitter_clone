@@ -18,7 +18,7 @@ class RetweetController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-            $tweet->increment('retweets');
+            $tweet->increment('retweets_count');
         });
     }
 
@@ -32,7 +32,7 @@ class RetweetController extends Controller
             ])->delete();
 
             if ($numOfDeletedRetweets == 1) {
-                $tweet->decrement('retweets');
+                $tweet->decrement('retweets_count');
             }
         });
     }

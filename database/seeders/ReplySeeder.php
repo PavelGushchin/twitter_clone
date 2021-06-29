@@ -28,12 +28,28 @@ class ReplySeeder extends Seeder
                 return;
             }
 
-            if ($makeTweetAReply = $this->faker->boolean()) {
-                $parentTweetIndex = $this->faker->numberBetween(0, $index - 1);
-                $parentTweet = $tweets[$parentTweetIndex];
+            if ($makeTweetAReply = $this->faker->boolean(90)) {
+                $start = $index - 100 > 0 ?: 0;
+                $end = $index - 1;
+                $parentTweet = $tweets[$this->faker->numberBetween($start, $end)];
 
                 $tweet->update([
                     'parent_tweet_id' => $parentTweet->id,
+                ]);
+            }
+        });
+
+
+        $parentTweets = Tweet::whereNull('parent_tweet_id')->get();
+        $childTweets = Tweet::whereNotNull('parent_tweet_id')->get();
+
+        $childTweets->map(function ($childTweet) use ($parentTweets) {
+            $randomParentTweet = $parentTweets->random();
+            $diff = $childTweet->id - $randomParentTweet->id;
+
+            if ($this->faker->boolean(90) && $diff > 0) {
+                $childTweet->update([
+                    'parent_tweet_id' => $randomParentTweet->id,
                 ]);
             }
         });

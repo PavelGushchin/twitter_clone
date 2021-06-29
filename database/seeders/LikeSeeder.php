@@ -29,7 +29,9 @@ class LikeSeeder extends Seeder
         $users = User::all();
 
         $users->map(function ($user) {
-            $tweetsToBeLiked = Tweet::inRandomOrder()->take($this->faker->numberBetween(0, 200))->get();
+            $tweetsToBeLiked = Tweet::inRandomOrder()
+                ->take($this->faker->numberBetween(0, 200))
+                ->get();
 
             $tweetsToBeLiked->map(function ($tweet) use ($user) {
                 Like::create([

@@ -18,7 +18,7 @@ class LikeController extends Controller
                 'created_at' => Carbon::now(),
             ]);
 
-            $tweet->increment('likes');
+            $tweet->increment('likes_count');
         });
     }
 
@@ -32,7 +32,7 @@ class LikeController extends Controller
             ])->delete();
 
             if ($numOfDeletedLikes == 1) {
-                $tweet->decrement('likes');
+                $tweet->decrement('likes_count');
             }
         });
     }

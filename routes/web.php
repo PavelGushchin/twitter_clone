@@ -56,13 +56,13 @@ Route::post('tweets', [TweetController::class, 'store'])
 
 Route::post('like/{tweet}', [LikeController::class, 'addLike'])
     ->name('like.add');
-Route::delete('like/{tweet}', [LikeController::class, 'removeLike'])
+Route::post('like/remove/{tweet}', [LikeController::class, 'removeLike'])
     ->name('like.remove');
 
 
 Route::post('retweet/{tweet}', [RetweetController::class, 'addRetweet'])
     ->name('retweet.add');
-Route::delete('retweet/{tweet}', [RetweetController::class, 'removeRetweet'])
+Route::post('retweet/remove/{tweet}', [RetweetController::class, 'removeRetweet'])
     ->name('retweet.remove');
 
 
