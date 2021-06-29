@@ -20,8 +20,13 @@ class CreateTweetsTable extends Migration
             $table->unsignedInteger('likes_count')->default(0);
             $table->unsignedInteger('retweets_count')->default(0);
             $table->unsignedInteger('replies_count')->default(0);
-            $table->foreignId('author_id')->constrained('users')->cascadeOnDelete();
-            $table->foreignId('parent_tweet_id')->nullable()->constrained('tweets')->nullOnDelete();
+            $table->foreignId('author_id')
+                ->constrained('users')
+                ->cascadeOnDelete();
+            $table->foreignId('parent_tweet_id')
+                ->nullable()
+                ->constrained('tweets')
+                ->nullOnDelete();
             $table->timestamp('created_at')->index();
         });
     }

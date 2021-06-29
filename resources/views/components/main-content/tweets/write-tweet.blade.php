@@ -1,6 +1,35 @@
 <hr class="mt-2">
 
-<div class="flex mt-5 px-6">
+<div class="flex mt-5 px-6"
+     x-data="{
+        form: {
+            text: '',
+            _token: '{{ csrf_token() }}'
+        },
+
+        newTweet: null,
+
+        submit() {
+            fetch('{{ route("tweets.store") }}', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(this.form)
+            })
+            .then(response => response.json())
+            .then(tweet => {
+                tweet.likes_count = 0
+                tweet.retweets_count = 0
+                tweet.replies_count = 0
+                this.newTweet = tweet
+
+                this.form.text = ''
+            })
+        }
+    }"
+
+     x-init="$watch('newTweet', tweet => $dispatch('new-tweet', tweet))"
+>
+
     <div>
         <a href="{{ $user->nickname }}">
             <img src="{{ $user->avatar ? asset($user->avatar . '&size=48x48') : asset('/img/default_profile_images/48x48.png') }}" alt="" class="rounded-3xl border border-gray-400" style="width: 48px; height: 48px;">
@@ -8,30 +37,6 @@
     </div>
 
     <form class="pl-4 flex-grow"
-        x-data="{
-            form: {
-                text: '',
-                _token: '{{ csrf_token() }}'
-            },
-
-            submit() {
-                fetch('{{ route("tweets.store") }}', {
-                    method: 'post',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify(this.form)
-                })
-                .then(response => response.json())
-                .then(tweet => {
-                    this.form.text = ''
-                    this.newTweet = tweet
-                })
-            },
-
-            newTweet: null
-        }"
-
-        x-init="$watch('newTweet', tweet => $dispatch('new-tweet', tweet))"
-
         @submit.prevent="submit()"
     >
 
@@ -50,7 +55,7 @@
             </button>
 
             <button class="text-lg text-white bg-light-blue-300 text-center py-1 px-5 mt-3 rounded-2xl cursor-default" disabled
-                    x-show="!form.text.length"
+                x-show="!form.text.length"
             >
                 Tweet
             </button>
