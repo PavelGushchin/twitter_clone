@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script defer src="{{ asset('js/app.js') }}"></script>
     </head>
 
     <body class="font-sans antialiased bg-white text-black">

@@ -3,7 +3,6 @@
         Home
     </div>
 
-
     <div x-data="{
             tweets: [],
             isLoading: true,
